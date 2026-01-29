@@ -9,13 +9,9 @@ public class Main {
         //Llista que provoca EmptySaleException
         ArrayList<Product> emptyProducts = new ArrayList<>();
         Sale emptySale = new Sale (emptyProducts);
-        try {
-            double priceTotal = emptySale.calculateTotalPrice();
-            System.out.println("El preu total és " + priceTotal);
-        }
-        catch (EmptySaleException e) {
-            System.out.println(e.getMessage());
-        }
+
+        double priceTotal = emptySale.calculateTotalPrice();
+        System.out.println("El preu total és " + priceTotal);
 
         //Llista que no provoca EmptySaleException
         ArrayList<Product> nonEmptyProducts = new ArrayList<>(List.of(
@@ -23,14 +19,9 @@ public class Main {
                 new Product("Chair", 4.75)
         ));
         Sale nonEmptySale = new Sale (nonEmptyProducts);
-        try {
-            double priceTotal = nonEmptySale.calculateTotalPrice();
-            System.out.println("El preu total és " + priceTotal);
 
-        }
-        catch (EmptySaleException e) {
-            System.out.println(e.getMessage());
-        }
+        double priceTotal2 = nonEmptySale.calculateTotalPrice();
+        System.out.println("El preu total és " + priceTotal2);
 
         //Codi que provoca IndexOutOfBoundsException
         try {

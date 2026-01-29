@@ -10,7 +10,7 @@ public class Sale {
         this.products = products;
     }
 
-    public double calculateTotalPrice() throws EmptySaleException {
+    public double calculateTotalPrice() {
         if (products.isEmpty()) {
             throw new EmptySaleException();
         }
