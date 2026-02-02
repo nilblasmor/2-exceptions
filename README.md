@@ -24,4 +24,4 @@ The project applies structured exception handling, domain-specific error modelin
 
 🛠 **Technologies**
 
-Backend: Java 25
+Backend: Java 25.
