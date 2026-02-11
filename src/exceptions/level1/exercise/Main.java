@@ -6,37 +6,44 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        //Llista que provoca EmptySaleException
-        ArrayList<Product> emptyProducts = new ArrayList<>();
-        Sale emptySale = new Sale (emptyProducts);
+        //List which generates EmptySaleException
+        Sale emptySale = new Sale();
 
-        double priceTotal = emptySale.calculateTotalPrice();
-        System.out.println("El preu total és " + priceTotal);
+        try {
+            double priceTotal = emptySale.calculateTotalPrice();
+            System.out.println("Total price is " + priceTotal);
+        }
+        catch (EmptySaleException e) {
+            System.out.println(e.getMessage());
+        }
 
-        //Llista que no provoca EmptySaleException
-        ArrayList<Product> nonEmptyProducts = new ArrayList<>(List.of(
-                new Product("Chocolate bar", 2.99),
-                new Product("Chair", 4.75)
-        ));
-        Sale nonEmptySale = new Sale (nonEmptyProducts);
+        //List which does not generate EmptySaleException
+        Sale nonEmptySale = new Sale();
+        nonEmptySale.addProduct(new Product("Chocolate bar", 2.99));
+        nonEmptySale.addProduct(new Product("Chair", 4.75));
 
-        double priceTotal2 = nonEmptySale.calculateTotalPrice();
-        System.out.println("El preu total és " + priceTotal2);
+        try {
+            double priceTotal2 = nonEmptySale.calculateTotalPrice();
+            System.out.println("Total price is " + priceTotal2);
+        }
+        catch (EmptySaleException e) {
+            System.out.println(e.getMessage());
+        }
 
-        //Codi que provoca IndexOutOfBoundsException
+        //Code which generates IndexOutOfBoundsException
         try {
             System.out.println(nonEmptyProducts.get(2));
         }
         catch (IndexOutOfBoundsException e) {
-            System.out.println("No hi ha cap producte en aquesta posició de la llista");
+            System.out.println("No product found in list position");
         }
 
-        //Codi que no provoca IndexOutOfBoundsException
+        //Code which does not generate IndexOutOfBoundsException
         try {
             System.out.println(nonEmptyProducts.get(0));
         }
         catch (IndexOutOfBoundsException e) {
-            System.out.println("No hi ha cap producte en aquesta posició de la llista");
+            System.out.println("No product found in list position");
         }
     }
 }

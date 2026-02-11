@@ -6,8 +6,12 @@ public class Sale {
     private ArrayList<Product> products;
     private double totalPrice;
 
-    public Sale(ArrayList<Product> products) {
-        this.products = products;
+    public Sale() {
+        this.products = new ArrayList<>();
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
     public double calculateTotalPrice() {
